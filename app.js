@@ -3,24 +3,24 @@ var inquirer = require("inquirer");
 var fs = require('fs');
 
 //Constructor function for a basic flashcard object.
-BasicFlashcard = function(frontArg, backArg) {
+var BasicFlashcard = function(frontArg, backArg) {
     this.front = frontArg,
         this.back = backArg,
         this.showFront = function() {
             console.log(this.front);
-        },
+        };
         this.showBack = function() {
             console.log(this.back);
         };
 };
 
 //Constructor function for a cloze-deleted flashcard object.
-ClozeFlashcard = function(textArg, clozeArg) {
+var ClozeFlashcard = function(textArg, clozeArg) {
     this.text = textArg,
         this.cloze = clozeArg,
         this.showText = function() {
             console.log(this.text);
-        },
+        };
         this.showCloze = function() {
             console.log(this.clozeArg);
         };
@@ -47,6 +47,7 @@ var selectCardType = function() {
                 clozeCardInquiry();
             }
         });
+    };
 
         //Function to take in user card information and create a basic flashcard. Writes to file.
 
@@ -71,7 +72,7 @@ var selectCardType = function() {
                 } else {
                     cardNumber++;
                     selectCardType();
-                };
+                }
 
             });
         };
@@ -105,9 +106,9 @@ var selectCardType = function() {
                 } else {
                     cardNumber++;
                     selectCardType();
-                };
+                }
 
-            })
+            });
         };
 
         //Function to start the app.
