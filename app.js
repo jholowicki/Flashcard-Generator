@@ -52,26 +52,16 @@ var selectCardType = function() {
     };
 });
 
-//Function to take in user card information and create a basic flashcard.
+//Function to take in user card information and create a basic flashcard. Writes to file.
 
 var basicCardInquiry = function(){
 	inquirer.prompt([{
             name: "front",
-            message: "What is on the front of the card?",
-            validate: function(value) {
-                if (isNaN(value) === true) {
-                    return true;
-                }
-                return false;
+            message: "What is on the front of the card?"
             },{
             name: "back",
             message: "What is on the back of the card?",
-            validate: function(value) {
-                if (isNaN(value) === true) {
-                    return true;
-                }
-                return false;
-            },{
+            {
             type: "confirm",
             name: "save",
             message: "Would you like to save flashcard to file?"
@@ -81,7 +71,7 @@ var basicCardInquiry = function(){
 	}
 };
 
-//Function to take in user card information and create a cloze-deleted flashcard.
+//Function to take in user card information and create a cloze-deleted flashcard. Writes to file.
 
 var clozeCardInquiry = function(){
 	inquirer.prompt([{
@@ -104,3 +94,6 @@ var clozeCardInquiry = function(){
 
 	}
 };
+
+//Function to start the app.
+selectCardType();
