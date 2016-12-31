@@ -67,7 +67,16 @@ var basicCardInquiry = function(){
             message: "Would you like to save flashcard to file?"
         }
 	}]).then(function(answers)){
-
+		if(answers.save){
+			var newFlashcard = new BasicFlashcard(answers.front, answers.back);
+			fs.writeFile('cards.txt', JSON.stringify(newFlashcard), 'utf-8');
+			console.log("New Flashcard created and saved! /n Front:" + answers.front + "/n Back:"+ answers.back);
+			cardNumber++;
+			selectCardType();
+		} else
+		cardNumber++;
+		selectCardType();
+	}
 	}
 };
 
@@ -91,7 +100,15 @@ var clozeCardInquiry = function(){
             message: "Would you like to save flashcard to file?"
         }
 	}]).then(function(answers)){
-
+		if(answers.save){
+			var newFlashcard = new ClozeFlashcard(answers.text, answers.cloze);
+			fs.writeFile('cards.txt', JSON.stringify(newFlashcard), 'utf-8');
+			console.log("New Flashcard created and saved! /n text:" + answers.text + "/n with deletion:"+ answers.cloze);
+			cardNumber++;
+			selectCardType();
+		} else
+		cardNumber++;
+		selectCardType();
 	}
 };
 
